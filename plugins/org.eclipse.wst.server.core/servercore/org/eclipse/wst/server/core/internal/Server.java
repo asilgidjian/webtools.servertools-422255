@@ -2121,7 +2121,7 @@ public class Server extends Base implements IServer {
 			startJob.addJobChangeListener(new JobChangeAdapter() {
 				public void done(IJobChangeEvent event) {
 					IStatus resultStatus = event.getResult();
-					if (resultStatus != null && resultStatus.getSeverity() == IStatus.ERROR) { 
+					if (resultStatus != null && (resultStatus.getSeverity() == IStatus.ERROR || resultStatus.getSeverity() == IStatus.CANCEL)) { 
 						// Do not launch the publish.
 						if (Trace.INFO) {
 							Trace.trace(Trace.STRING_INFO,
